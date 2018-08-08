@@ -13,15 +13,16 @@ import java.util.Date;
 /**
  * Created by shanhaodong on 2018/8/8
  */
-@WebServlet("/hello")
+@WebServlet(value = "/hello")
 public class HelloServlet extends HttpServlet {
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM");
         String currentTime = dateFormat.format(new Date());
         request.setAttribute("currentTime", currentTime);
         request.getRequestDispatcher("/WEB-INF/jsp/hello.jsp").forward(request, response);
     }
-
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
     }
